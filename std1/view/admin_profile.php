@@ -35,7 +35,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        	My Profile
+        	Mon Profil
         	<small>Preview</small>
         </h1>
         <ol class="breadcrumb">
@@ -86,19 +86,19 @@ $password=$row1['password'];
                   				<table class="table table-bordered table-striped">
                     				<tbody>
                       					<tr>
-                        					<td class="col-md-4">Full Name</td>
+                        					<td class="col-md-4">Nom et prénoms</td>
                         					<td id="full_name"><?php echo $full_name; ?></td>
                       					</tr>
                       					<tr>
-                        					<td>Name With Initials</td>
+                        					<td>Initiales</td>
                         					<td id="i_name"><?php echo $i_name; ?> </td>
                       					</tr>
                              			<tr>
-                        					<td>Address</td>
+                        					<td>Addresse</td>
                         					<td id="address"><?php echo $address; ?> </td>
                       					</tr>
                         				<tr>
-                        					<td>Gender</td>
+                        					<td>Genre</td>
                         					<td id="gender"><?php echo $gender; ?> </td>
                       					</tr>
                       					<tr>
@@ -106,22 +106,22 @@ $password=$row1['password'];
                         					<td id="email"><?php echo $email; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Phone Number</td>
+                        					<td>Telephone</td>
                         					<td id="phone"><?php echo $phone; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>User Name</td>
+                        					<td>Nom d'utilisateur</td>
                         					<td id="email"><?php echo $user_name; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Password</td>
+                        					<td>MDP</td>
                         					<td id="phone"><?php echo $password; ?> </td>
                       					</tr>
                     				</tbody>
                   				</table>
                   			</div>
                    		</div>
-                        <p class="alert-info" id="note1"><strong>Note: We get the email address for the user name.</strong></p>
+                        <p class="alert-info" id="note1"><strong></strong></p>
                      </div>
                      <div class="panel-footer text-right" id="panel_footer" >
                     	<a href="#" onClick="editMyProfile('<?php echo $index; ?>')" type="button" class="btn btn-sm btn-warning" id="btnEdit"><i class="glyphicon glyphicon-edit"></i></a><!--MSK-00151-->
