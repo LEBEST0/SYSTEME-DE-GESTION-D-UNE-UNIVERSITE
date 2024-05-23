@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 05, 2018 at 04:19 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 23, 2024 at 02:34 PM
+-- Server version: 8.3.0
+-- PHP Version: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `std1`
+-- Database: `std_db`
 --
 
 -- --------------------------------------------------------
@@ -26,9 +27,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
   `full_name` varchar(255) NOT NULL,
   `i_name` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
@@ -36,15 +38,16 @@ CREATE TABLE `admin` (
   `phone` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `image_name` varchar(255) NOT NULL,
-  `reg_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `reg_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `index_number`, `full_name`, `i_name`, `gender`, `address`, `phone`, `email`, `image_name`, `reg_date`) VALUES
-(1, 100, 'Ingenious Developer1', 'Ingenious Developer1', 'Male', 'Sri Lanka1', '111-111-1114', 'admin@gmail.com', 'uploads/20170923124105.jpg', '2018-01-10');
+(1, 100, 'Moussa Mohamed Sidick Stephane', 'M M S S', 'Homme', 'Cote D\'Ivoire', '0798656902', 'admin@gmail.com', 'uploads\\WhatsApp Image 2024-05-23 à 09.02.52_1f7cce65.jpg', '2018-01-10');
 
 -- --------------------------------------------------------
 
@@ -52,18 +55,20 @@ INSERT INTO `admin` (`id`, `index_number`, `full_name`, `i_name`, `gender`, `add
 -- Table structure for table `chat`
 --
 
-CREATE TABLE `chat` (
-  `id` int(11) NOT NULL,
-  `conversation_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `chat`;
+CREATE TABLE IF NOT EXISTS `chat` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `conversation_id` int NOT NULL,
   `grade` varchar(255) NOT NULL,
-  `sender_index` bigint(11) NOT NULL,
+  `sender_index` bigint NOT NULL,
   `sender_type` varchar(255) NOT NULL,
-  `receiver_index` bigint(11) NOT NULL,
+  `receiver_index` bigint NOT NULL,
   `receiver_type` varchar(255) NOT NULL,
   `msg` text NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
-  `_isread` int(11) NOT NULL
+  `_isread` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -72,11 +77,13 @@ CREATE TABLE `chat` (
 -- Table structure for table `class_room`
 --
 
-CREATE TABLE `class_room` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `class_room`;
+CREATE TABLE IF NOT EXISTS `class_room` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `student_count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `student_count` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_room`
@@ -95,19 +102,21 @@ INSERT INTO `class_room` (`id`, `name`, `student_count`) VALUES
 -- Table structure for table `events`
 --
 
-CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `events`;
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `note` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `category_id` int NOT NULL,
   `grade_id` varchar(255) NOT NULL,
-  `create_by` bigint(11) NOT NULL,
+  `create_by` bigint NOT NULL,
   `creator_type` varchar(255) NOT NULL,
   `start_date_time` datetime NOT NULL,
   `end_date_time` datetime NOT NULL,
-  `year` int(11) NOT NULL,
-  `month` int(11) NOT NULL
+  `year` int NOT NULL,
+  `month` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -116,9 +125,11 @@ CREATE TABLE `events` (
 -- Table structure for table `event_category`
 --
 
-CREATE TABLE `event_category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+DROP TABLE IF EXISTS `event_category`;
+CREATE TABLE IF NOT EXISTS `event_category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -127,10 +138,12 @@ CREATE TABLE `event_category` (
 -- Table structure for table `event_category_type`
 --
 
-CREATE TABLE `event_category_type` (
-  `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+DROP TABLE IF EXISTS `event_category_type`;
+CREATE TABLE IF NOT EXISTS `event_category_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `category_id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -139,10 +152,12 @@ CREATE TABLE `event_category_type` (
 -- Table structure for table `exam`
 --
 
-CREATE TABLE `exam` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `exam`;
+CREATE TABLE IF NOT EXISTS `exam` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam`
@@ -159,14 +174,16 @@ INSERT INTO `exam` (`id`, `name`) VALUES
 -- Table structure for table `exam_range_grade`
 --
 
-CREATE TABLE `exam_range_grade` (
-  `id` int(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `exam_range_grade`;
+CREATE TABLE IF NOT EXISTS `exam_range_grade` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `grade_id` int NOT NULL,
   `mark_range` varchar(255) NOT NULL,
-  `_from` int(11) NOT NULL,
-  `_to` int(11) NOT NULL,
-  `mark_grade` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `_from` int NOT NULL,
+  `_to` int NOT NULL,
+  `mark_grade` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam_range_grade`
@@ -198,16 +215,25 @@ INSERT INTO `exam_range_grade` (`id`, `grade_id`, `mark_range`, `_from`, `_to`, 
 -- Table structure for table `exam_timetable`
 --
 
-CREATE TABLE `exam_timetable` (
-  `id` int(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `exam_timetable`;
+CREATE TABLE IF NOT EXISTS `exam_timetable` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `grade_id` int NOT NULL,
+  `exam_id` int NOT NULL,
   `day` varchar(255) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `classroom_id` int(11) NOT NULL,
+  `subject_id` int NOT NULL,
+  `classroom_id` int NOT NULL,
   `start_time` double(11,2) NOT NULL,
-  `end_time` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `end_time` double(11,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `exam_timetable`
+--
+
+INSERT INTO `exam_timetable` (`id`, `grade_id`, `exam_id`, `day`, `subject_id`, `classroom_id`, `start_time`, `end_time`) VALUES
+(1, 11, 4, 'Sunday', 16, 19, 10.00, 12.00);
 
 -- --------------------------------------------------------
 
@@ -215,12 +241,14 @@ CREATE TABLE `exam_timetable` (
 -- Table structure for table `grade`
 --
 
-CREATE TABLE `grade` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `grade`;
+CREATE TABLE IF NOT EXISTS `grade` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `admission_fee` double(11,2) NOT NULL,
-  `hall_charge` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `hall_charge` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade`
@@ -237,16 +265,18 @@ INSERT INTO `grade` (`id`, `name`, `admission_fee`, `hall_charge`) VALUES
 -- Table structure for table `group_message`
 --
 
-CREATE TABLE `group_message` (
-  `id` int(11) NOT NULL,
-  `conversation_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `group_message`;
+CREATE TABLE IF NOT EXISTS `group_message` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `conversation_id` int NOT NULL,
   `message` text NOT NULL,
-  `sender_index` bigint(11) NOT NULL,
+  `sender_index` bigint NOT NULL,
   `sender_type` varchar(255) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `group_id` int NOT NULL,
   `grade` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `time` time NOT NULL
+  `time` time NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -255,22 +285,24 @@ CREATE TABLE `group_message` (
 -- Table structure for table `main_notifications`
 --
 
-CREATE TABLE `main_notifications` (
-  `id` int(11) NOT NULL,
-  `notification_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `main_notifications`;
+CREATE TABLE IF NOT EXISTS `main_notifications` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `notification_id` int NOT NULL,
   `_status` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` year NOT NULL,
   `month` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `_isread` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `_isread` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `main_notifications`
 --
 
 INSERT INTO `main_notifications` (`id`, `notification_id`, `_status`, `year`, `month`, `date`, `_isread`) VALUES
-(1, 1, 'Payments', 2017, 'November', '2017-11-25', 1);
+(1, 1, 'Payments', '2017', 'November', '2017-11-25', 1);
 
 -- --------------------------------------------------------
 
@@ -278,15 +310,17 @@ INSERT INTO `main_notifications` (`id`, `notification_id`, `_status`, `year`, `m
 -- Table structure for table `my_friends`
 --
 
-CREATE TABLE `my_friends` (
-  `id` int(11) NOT NULL,
-  `my_index` bigint(11) NOT NULL,
-  `friend_index` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `my_friends`;
+CREATE TABLE IF NOT EXISTS `my_friends` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `my_index` bigint NOT NULL,
+  `friend_index` bigint NOT NULL,
   `_status` varchar(255) NOT NULL,
-  `conversation_id` int(11) NOT NULL,
+  `conversation_id` int NOT NULL,
   `my_type` varchar(255) NOT NULL,
   `friend_type` varchar(255) NOT NULL,
-  `_isread` int(11) NOT NULL
+  `_isread` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -295,12 +329,14 @@ CREATE TABLE `my_friends` (
 -- Table structure for table `notification_history`
 --
 
-CREATE TABLE `notification_history` (
-  `id` int(11) NOT NULL,
-  `notification_id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `notification_history`;
+CREATE TABLE IF NOT EXISTS `notification_history` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `notification_id` int NOT NULL,
+  `index_number` bigint NOT NULL,
   `user_type` varchar(255) NOT NULL,
-  `_isread` int(11) NOT NULL
+  `_isread` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -309,15 +345,17 @@ CREATE TABLE `notification_history` (
 -- Table structure for table `online_chat`
 --
 
-CREATE TABLE `online_chat` (
-  `id` int(11) NOT NULL,
-  `conversation_id` int(11) NOT NULL,
-  `user_index` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `online_chat`;
+CREATE TABLE IF NOT EXISTS `online_chat` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `conversation_id` int NOT NULL,
+  `user_index` bigint NOT NULL,
   `msg` longtext NOT NULL,
   `user_type` varchar(255) NOT NULL,
-  `_isread` int(11) NOT NULL,
+  `_isread` int NOT NULL,
   `date` date NOT NULL,
-  `time` time NOT NULL
+  `time` time NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -326,10 +364,11 @@ CREATE TABLE `online_chat` (
 -- Table structure for table `parents`
 --
 
-CREATE TABLE `parents` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `parents`;
+CREATE TABLE IF NOT EXISTS `parents` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `index_number` varchar(255) NOT NULL,
-  `my_son_index` bigint(11) NOT NULL,
+  `my_son_index` bigint NOT NULL,
   `full_name` varchar(255) NOT NULL,
   `i_name` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
@@ -339,21 +378,22 @@ CREATE TABLE `parents` (
   `image_name` varchar(255) NOT NULL,
   `b_date` date NOT NULL,
   `reg_date` date NOT NULL,
-  `reg_year` year(4) NOT NULL,
+  `reg_year` year NOT NULL,
   `reg_month` varchar(255) NOT NULL,
-  `_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `parents`
 --
 
 INSERT INTO `parents` (`id`, `index_number`, `my_son_index`, `full_name`, `i_name`, `gender`, `address`, `phone`, `email`, `image_name`, `b_date`, `reg_date`, `reg_year`, `reg_month`, `_status`) VALUES
-(7, 'G-11', 11, 'Dad 1', 'Dad 1', 'Male', 'USA', '111-111-1112', 'dad1@gmail.com', 'uploads/20171125093360.png', '1965-08-25', '2017-11-24', 2017, 'November', ''),
-(8, 'G-12', 12, 'Dad 2', 'Dad 2', 'Male', 'USA', '(222) 222-2222', 'dad2@gmail.com', 'uploads/20171125104538.png', '1968-05-10', '2017-11-24', 2017, 'November', ''),
-(9, 'G-13', 13, 'Dad 3', 'Dad 3', 'Male', 'USA', '(333) 333-3333', 'dad3@gmail.com', 'uploads/20171125091460.jpg', '1965-05-28', '2017-11-24', 2017, 'November', ''),
-(12, 'G-14', 14, 'Dad 4', 'Dad 4', 'Male', 'USA', '(444) 444-4444', 'dad4@gmail.com', 'uploads/20171125091724.png', '1964-08-25', '2017-11-24', 2017, 'November', ''),
-(13, 'G-25252525', 25252525, 'Dad 1', 'Dad 154444444', 'Male', 'Sri Lankaklkklklkk', '555-555-5555', 'dad1hgjhjhjhj23@gmail.com', 'uploads/2018024035941.png', '0000-00-00', '2018-02-04', 2018, 'February', '');
+(7, 'G-11', 11, 'Dad 1', 'Dad 1', 'Male', 'USA', '111-111-1112', 'dad1@gmail.com', 'uploads/20171125093360.png', '1965-08-25', '2017-11-24', '2017', 'November', ''),
+(8, 'G-12', 12, 'Dad 2', 'Dad 2', 'Male', 'USA', '(222) 222-2222', 'dad2@gmail.com', 'uploads/20171125104538.png', '1968-05-10', '2017-11-24', '2017', 'November', ''),
+(9, 'G-13', 13, 'Dad 3', 'Dad 3', 'Male', 'USA', '(333) 333-3333', 'dad3@gmail.com', 'uploads/20171125091460.jpg', '1965-05-28', '2017-11-24', '2017', 'November', ''),
+(12, 'G-14', 14, 'Dad 4', 'Dad 4', 'Male', 'USA', '(444) 444-4444', 'dad4@gmail.com', 'uploads/20171125091724.png', '1964-08-25', '2017-11-24', '2017', 'November', ''),
+(13, 'G-25252525', 25252525, 'Dad 1', 'Dad 154444444', 'Male', 'Sri Lankaklkklklkk', '555-555-5555', 'dad1hgjhjhjhj23@gmail.com', 'uploads/2018024035941.png', '0000-00-00', '2018-02-04', '2018', 'February', '');
 
 -- --------------------------------------------------------
 
@@ -361,21 +401,23 @@ INSERT INTO `parents` (`id`, `index_number`, `my_son_index`, `full_name`, `i_nam
 -- Table structure for table `payment_notifications`
 --
 
-CREATE TABLE `payment_notifications` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `year` year(4) NOT NULL,
+DROP TABLE IF EXISTS `payment_notifications`;
+CREATE TABLE IF NOT EXISTS `payment_notifications` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
+  `year` year NOT NULL,
   `month` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `_status` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `_status` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `payment_notifications`
 --
 
 INSERT INTO `payment_notifications` (`id`, `index_number`, `year`, `month`, `date`, `_status`) VALUES
-(1, 11, 2017, 'November', '2017-11-25', 1);
+(1, 11, '2017', 'November', '2017-11-25', 1);
 
 -- --------------------------------------------------------
 
@@ -383,17 +425,19 @@ INSERT INTO `payment_notifications` (`id`, `index_number`, `year`, `month`, `dat
 -- Table structure for table `petty_cash`
 --
 
-CREATE TABLE `petty_cash` (
-  `id` int(11) NOT NULL,
-  `received_by` bigint(11) NOT NULL,
-  `approved_by` bigint(11) NOT NULL,
-  `year` year(4) NOT NULL,
+DROP TABLE IF EXISTS `petty_cash`;
+CREATE TABLE IF NOT EXISTS `petty_cash` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `received_by` bigint NOT NULL,
+  `approved_by` bigint NOT NULL,
+  `year` year NOT NULL,
   `month` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `paid` double(11,2) NOT NULL,
   `received_type` varchar(255) NOT NULL,
-  `_status` varchar(255) NOT NULL
+  `_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -402,20 +446,22 @@ CREATE TABLE `petty_cash` (
 -- Table structure for table `petty_cash_history`
 --
 
-CREATE TABLE `petty_cash_history` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `petty_cash_history`;
+CREATE TABLE IF NOT EXISTS `petty_cash_history` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `_desc` varchar(255) NOT NULL,
-  `received_by` bigint(11) NOT NULL,
-  `approved_by` bigint(11) NOT NULL,
-  `year` year(4) NOT NULL,
+  `received_by` bigint NOT NULL,
+  `approved_by` bigint NOT NULL,
+  `year` year NOT NULL,
   `month` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `amount` double(11,2) NOT NULL,
   `total_paid` double(11,2) NOT NULL,
-  `invoice_number` int(11) NOT NULL,
+  `invoice_number` int NOT NULL,
   `received_type` varchar(255) NOT NULL,
-  `_status` varchar(255) NOT NULL
+  `_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -424,9 +470,10 @@ CREATE TABLE `petty_cash_history` (
 -- Table structure for table `student`
 --
 
-CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE IF NOT EXISTS `student` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
   `full_name` varchar(255) NOT NULL,
   `i_name` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
@@ -436,21 +483,22 @@ CREATE TABLE `student` (
   `image_name` varchar(255) NOT NULL,
   `b_date` date NOT NULL,
   `_status` varchar(255) NOT NULL,
-  `reg_year` year(4) NOT NULL,
+  `reg_year` year NOT NULL,
   `reg_month` varchar(255) NOT NULL,
-  `reg_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `reg_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`id`, `index_number`, `full_name`, `i_name`, `gender`, `address`, `phone`, `email`, `image_name`, `b_date`, `_status`, `reg_year`, `reg_month`, `reg_date`) VALUES
-(11, 11, 'Student 1', 'Student 1jbjb', 'Female', 'USA', '111-111-1112', 'std1@gmail.com', 'uploads/20171125093359.png', '2010-01-01', '', 2017, 'November', '2017-11-24'),
-(12, 12, 'Student 2', 'Student 20', 'Male', 'USA', '(222) 222-2222', 'std2@gmail.com', 'uploads/20171125104521.png', '2010-01-02', '', 2017, 'November', '2017-11-24'),
-(13, 13, 'Student 3', 'Student 3', 'Female', 'USA', '(333) 333-3333', 'std3@gmail.com', 'uploads/20171125091459.png', '2010-01-03', '', 2017, 'November', '2017-11-24'),
-(19, 14, 'Student 4', 'Student 4', 'Female', 'USA', '(444) 444-4444', 'std4@gmail.com', 'uploads/20171125091723.png', '2010-01-04', '', 2017, 'November', '2017-11-24'),
-(20, 25252525, 'Sandun1111111111', 'Sandun111111111', 'Female', 'Sri Lanka11111111', '455-455-4555', 'lkforex2015111@gmail.com', 'uploads/2018024042603.jpg', '0000-00-00', '', 2018, 'February', '2018-02-04');
+(11, 11, 'Student 1', 'Student 1jbjb', 'Female', 'USA', '111-111-1112', 'std1@gmail.com', 'uploads/20171125093359.png', '2010-01-01', '', '2017', 'November', '2017-11-24'),
+(12, 12, 'Student 2', 'Student 20', 'Male', 'USA', '(222) 222-2222', 'std2@gmail.com', 'uploads/20171125104521.png', '2010-01-02', '', '2017', 'November', '2017-11-24'),
+(13, 13, 'Student 3', 'Student 3', 'Female', 'USA', '(333) 333-3333', 'std3@gmail.com', 'uploads/20171125091459.png', '2010-01-03', '', '2017', 'November', '2017-11-24'),
+(19, 14, 'Student 4', 'Student 4', 'Female', 'USA', '(444) 444-4444', 'std4@gmail.com', 'uploads/20171125091723.png', '2010-01-04', '', '2017', 'November', '2017-11-24'),
+(20, 25252525, 'Sandun1111111111', 'Sandun111111111', 'Female', 'Sri Lanka11111111', '455-455-4555', 'lkforex2015111@gmail.com', 'uploads/2018024042603.jpg', '0000-00-00', '', '2018', 'February', '2018-02-04');
 
 -- --------------------------------------------------------
 
@@ -458,23 +506,25 @@ INSERT INTO `student` (`id`, `index_number`, `full_name`, `i_name`, `gender`, `a
 -- Table structure for table `student_attendance`
 --
 
-CREATE TABLE `student_attendance` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `student_attendance`;
+CREATE TABLE IF NOT EXISTS `student_attendance` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
   `date` date NOT NULL,
   `month` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` year NOT NULL,
   `time` time NOT NULL,
   `_status1` varchar(255) NOT NULL,
-  `_status2` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `_status2` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_attendance`
 --
 
 INSERT INTO `student_attendance` (`id`, `index_number`, `date`, `month`, `year`, `time`, `_status1`, `_status2`) VALUES
-(1, 11, '2017-11-25', 'November', 2017, '11:30:59', 'intime', 'Present');
+(1, 11, '2017-11-25', 'November', '2017', '11:30:59', 'intime', 'Present');
 
 -- --------------------------------------------------------
 
@@ -482,40 +532,42 @@ INSERT INTO `student_attendance` (`id`, `index_number`, `date`, `month`, `year`,
 -- Table structure for table `student_exam`
 --
 
-CREATE TABLE `student_exam` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `student_exam`;
+CREATE TABLE IF NOT EXISTS `student_exam` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
+  `grade_id` int NOT NULL,
+  `exam_id` int NOT NULL,
+  `subject_id` int NOT NULL,
   `marks` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `year` year NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_exam`
 --
 
 INSERT INTO `student_exam` (`id`, `index_number`, `grade_id`, `exam_id`, `subject_id`, `marks`, `year`, `date`) VALUES
-(37, 11, 11, 4, 15, '45', 2017, '2017-11-26'),
-(38, 11, 11, 4, 16, '60', 2017, '2017-11-26'),
-(39, 11, 11, 4, 17, '95', 2017, '2017-11-26'),
-(40, 11, 11, 4, 18, '65', 2017, '2017-11-26'),
-(41, 11, 11, 4, 19, '60', 2017, '2017-11-26'),
-(42, 11, 11, 4, 20, '90', 2017, '2017-11-26'),
-(43, 11, 11, 5, 15, '75', 2017, '2017-11-26'),
-(44, 11, 11, 5, 16, '95', 2017, '2017-11-26'),
-(45, 11, 11, 5, 17, '65', 2017, '2017-11-26'),
-(46, 11, 11, 5, 18, '85', 2017, '2017-11-26'),
-(47, 11, 11, 5, 19, '92', 2017, '2017-11-26'),
-(48, 11, 11, 5, 20, '98', 2017, '2017-11-26'),
-(49, 11, 11, 6, 15, '75', 2017, '2017-11-26'),
-(50, 11, 11, 6, 16, '94', 2017, '2017-11-26'),
-(51, 11, 11, 6, 17, '70', 2017, '2017-11-26'),
-(52, 11, 11, 6, 18, '97', 2017, '2017-11-26'),
-(53, 11, 11, 6, 19, '82', 2017, '2017-11-26'),
-(54, 11, 11, 6, 20, '97', 2017, '2017-11-26');
+(37, 11, 11, 4, 15, '45', '2017', '2017-11-26'),
+(38, 11, 11, 4, 16, '60', '2017', '2017-11-26'),
+(39, 11, 11, 4, 17, '95', '2017', '2017-11-26'),
+(40, 11, 11, 4, 18, '65', '2017', '2017-11-26'),
+(41, 11, 11, 4, 19, '60', '2017', '2017-11-26'),
+(42, 11, 11, 4, 20, '90', '2017', '2017-11-26'),
+(43, 11, 11, 5, 15, '75', '2017', '2017-11-26'),
+(44, 11, 11, 5, 16, '95', '2017', '2017-11-26'),
+(45, 11, 11, 5, 17, '65', '2017', '2017-11-26'),
+(46, 11, 11, 5, 18, '85', '2017', '2017-11-26'),
+(47, 11, 11, 5, 19, '92', '2017', '2017-11-26'),
+(48, 11, 11, 5, 20, '98', '2017', '2017-11-26'),
+(49, 11, 11, 6, 15, '75', '2017', '2017-11-26'),
+(50, 11, 11, 6, 16, '94', '2017', '2017-11-26'),
+(51, 11, 11, 6, 17, '70', '2017', '2017-11-26'),
+(52, 11, 11, 6, 18, '97', '2017', '2017-11-26'),
+(53, 11, 11, 6, 19, '82', '2017', '2017-11-26'),
+(54, 11, 11, 6, 20, '97', '2017', '2017-11-26');
 
 -- --------------------------------------------------------
 
@@ -523,23 +575,25 @@ INSERT INTO `student_exam` (`id`, `index_number`, `grade_id`, `exam_id`, `subjec
 -- Table structure for table `student_grade`
 --
 
-CREATE TABLE `student_grade` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `year` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `student_grade`;
+CREATE TABLE IF NOT EXISTS `student_grade` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
+  `grade_id` int NOT NULL,
+  `year` year NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_grade`
 --
 
 INSERT INTO `student_grade` (`id`, `index_number`, `grade_id`, `year`) VALUES
-(81, 11, 11, 2017),
-(82, 12, 11, 2017),
-(83, 13, 11, 2017),
-(86, 14, 11, 2017),
-(87, 25252525, 11, 2018);
+(81, 11, 11, '2017'),
+(82, 12, 11, '2017'),
+(83, 13, 11, '2017'),
+(86, 14, 11, '2017'),
+(87, 25252525, 11, '2018');
 
 -- --------------------------------------------------------
 
@@ -547,31 +601,33 @@ INSERT INTO `student_grade` (`id`, `index_number`, `grade_id`, `year`) VALUES
 -- Table structure for table `student_payment`
 --
 
-CREATE TABLE `student_payment` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `year` year(4) NOT NULL,
+DROP TABLE IF EXISTS `student_payment`;
+CREATE TABLE IF NOT EXISTS `student_payment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
+  `year` year NOT NULL,
   `month` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `paid` double(11,2) NOT NULL,
   `_status` varchar(255) NOT NULL,
-  `student_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `student_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_payment`
 --
 
 INSERT INTO `student_payment` (`id`, `index_number`, `year`, `month`, `date`, `paid`, `_status`, `student_status`) VALUES
-(225, 11, 2017, 'November', '2017-11-24', 1000.00, 'Admission Fee', ''),
-(226, 11, 2017, 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
-(227, 12, 2017, 'November', '2017-11-24', 1000.00, 'Admission Fee', ''),
-(228, 12, 2017, 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
-(229, 13, 2017, 'November', '2017-11-24', 1000.00, 'Admission Fee', ''),
-(230, 13, 2017, 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
-(234, 14, 2017, 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
-(235, 25252525, 2018, 'February', '2018-02-04', 1000.00, 'Admission Fee', ''),
-(236, 25252525, 2018, 'February', '2018-02-04', 1500.00, 'Monthly Fee1', '');
+(225, 11, '2017', 'November', '2017-11-24', 1000.00, 'Admission Fee', ''),
+(226, 11, '2017', 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
+(227, 12, '2017', 'November', '2017-11-24', 1000.00, 'Admission Fee', ''),
+(228, 12, '2017', 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
+(229, 13, '2017', 'November', '2017-11-24', 1000.00, 'Admission Fee', ''),
+(230, 13, '2017', 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
+(234, 14, '2017', 'November', '2017-11-24', 1500.00, 'Monthly Fee1', ''),
+(235, 25252525, '2018', 'February', '2018-02-04', 1000.00, 'Admission Fee', ''),
+(236, 25252525, '2018', 'February', '2018-02-04', 1500.00, 'Monthly Fee1', '');
 
 -- --------------------------------------------------------
 
@@ -579,56 +635,58 @@ INSERT INTO `student_payment` (`id`, `index_number`, `year`, `month`, `date`, `p
 -- Table structure for table `student_payment_history`
 --
 
-CREATE TABLE `student_payment_history` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `student_payment_history`;
+CREATE TABLE IF NOT EXISTS `student_payment_history` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
+  `grade_id` int NOT NULL,
+  `subject_id` int NOT NULL,
+  `teacher_id` int NOT NULL,
   `subject_fee` double(11,2) NOT NULL,
   `subtotal` double(11,2) NOT NULL,
   `_status` varchar(255) NOT NULL,
   `month` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` year NOT NULL,
   `date` date NOT NULL,
-  `invoice_number` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `invoice_number` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=624 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_payment_history`
 --
 
 INSERT INTO `student_payment_history` (`id`, `index_number`, `grade_id`, `subject_id`, `teacher_id`, `subject_fee`, `subtotal`, `_status`, `month`, `year`, `date`, `invoice_number`) VALUES
-(582, 11, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 1),
-(583, 11, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 1),
-(584, 11, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 1),
-(585, 11, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 1),
-(586, 11, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 1),
-(587, 11, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 1),
-(588, 12, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 227),
-(589, 12, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 227),
-(590, 12, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 227),
-(591, 12, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 227),
-(592, 12, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 227),
-(593, 12, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 227),
-(594, 13, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 229),
-(595, 13, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 229),
-(596, 13, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 229),
-(597, 13, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 229),
-(598, 13, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 229),
-(599, 13, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 229),
-(612, 14, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 231),
-(613, 14, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 231),
-(614, 14, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 231),
-(615, 14, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 231),
-(616, 14, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 231),
-(617, 14, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', 2017, '2017-11-24', 231),
-(618, 25252525, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'February', 2018, '2018-02-04', 235),
-(619, 25252525, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'February', 2018, '2018-02-04', 235),
-(620, 25252525, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'February', 2018, '2018-02-04', 235),
-(621, 25252525, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'February', 2018, '2018-02-04', 235),
-(622, 25252525, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'February', 2018, '2018-02-04', 235),
-(623, 25252525, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'February', 2018, '2018-02-04', 235);
+(582, 11, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 1),
+(583, 11, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 1),
+(584, 11, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 1),
+(585, 11, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 1),
+(586, 11, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 1),
+(587, 11, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 1),
+(588, 12, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 227),
+(589, 12, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 227),
+(590, 12, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 227),
+(591, 12, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 227),
+(592, 12, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 227),
+(593, 12, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 227),
+(594, 13, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 229),
+(595, 13, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 229),
+(596, 13, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 229),
+(597, 13, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 229),
+(598, 13, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 229),
+(599, 13, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 229),
+(612, 14, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 231),
+(613, 14, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 231),
+(614, 14, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 231),
+(615, 14, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 231),
+(616, 14, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 231),
+(617, 14, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'November', '2017', '2017-11-24', 231),
+(618, 25252525, 11, 15, 10, 250.00, 250.00, 'Monthly Fee', 'February', '2018', '2018-02-04', 235),
+(619, 25252525, 11, 16, 11, 250.00, 250.00, 'Monthly Fee', 'February', '2018', '2018-02-04', 235),
+(620, 25252525, 11, 17, 12, 250.00, 250.00, 'Monthly Fee', 'February', '2018', '2018-02-04', 235),
+(621, 25252525, 11, 18, 13, 250.00, 250.00, 'Monthly Fee', 'February', '2018', '2018-02-04', 235),
+(622, 25252525, 11, 19, 14, 250.00, 250.00, 'Monthly Fee', 'February', '2018', '2018-02-04', 235),
+(623, 25252525, 11, 20, 15, 250.00, 250.00, 'Monthly Fee', 'February', '2018', '2018-02-04', 235);
 
 -- --------------------------------------------------------
 
@@ -636,14 +694,16 @@ INSERT INTO `student_payment_history` (`id`, `index_number`, `grade_id`, `subjec
 -- Table structure for table `student_subject`
 --
 
-CREATE TABLE `student_subject` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `student_subject`;
+CREATE TABLE IF NOT EXISTS `student_subject` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
   `_status` varchar(255) NOT NULL,
-  `sr_id` int(11) NOT NULL,
-  `year` int(11) NOT NULL,
-  `reg_month` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `sr_id` int NOT NULL,
+  `year` int NOT NULL,
+  `reg_month` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_subject`
@@ -687,10 +747,12 @@ INSERT INTO `student_subject` (`id`, `index_number`, `_status`, `sr_id`, `year`,
 -- Table structure for table `subject`
 --
 
-CREATE TABLE `subject` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `subject`;
+CREATE TABLE IF NOT EXISTS `subject` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject`
@@ -710,13 +772,15 @@ INSERT INTO `subject` (`id`, `name`) VALUES
 -- Table structure for table `subject_routing`
 --
 
-CREATE TABLE `subject_routing` (
-  `id` int(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL,
-  `fee` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `subject_routing`;
+CREATE TABLE IF NOT EXISTS `subject_routing` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `grade_id` int NOT NULL,
+  `subject_id` int NOT NULL,
+  `teacher_id` int NOT NULL,
+  `fee` double(11,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject_routing`
@@ -729,7 +793,6 @@ INSERT INTO `subject_routing` (`id`, `grade_id`, `subject_id`, `teacher_id`, `fe
 (20, 11, 18, 13, 250.00),
 (21, 11, 19, 14, 250.00),
 (22, 11, 20, 15, 250.00),
-(23, 12, 15, 10, 350.00),
 (24, 12, 16, 11, 350.00),
 (25, 12, 17, 12, 350.00),
 (26, 12, 18, 13, 350.00),
@@ -748,8 +811,9 @@ INSERT INTO `subject_routing` (`id`, `grade_id`, `subject_id`, `teacher_id`, `fe
 -- Table structure for table `teacher`
 --
 
-CREATE TABLE `teacher` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `teacher`;
+CREATE TABLE IF NOT EXISTS `teacher` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `full_name` varchar(255) NOT NULL,
   `i_name` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
@@ -757,9 +821,10 @@ CREATE TABLE `teacher` (
   `phone` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `image_name` varchar(255) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `reg_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `index_number` bigint NOT NULL,
+  `reg_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher`
@@ -779,15 +844,17 @@ INSERT INTO `teacher` (`id`, `full_name`, `i_name`, `gender`, `address`, `phone`
 -- Table structure for table `teacher_attendance`
 --
 
-CREATE TABLE `teacher_attendance` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `teacher_attendance`;
+CREATE TABLE IF NOT EXISTS `teacher_attendance` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
   `date` date NOT NULL,
   `month` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` year NOT NULL,
   `time` time NOT NULL,
   `_status1` varchar(255) NOT NULL,
-  `_status2` varchar(255) NOT NULL
+  `_status2` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -796,14 +863,16 @@ CREATE TABLE `teacher_attendance` (
 -- Table structure for table `teacher_salary`
 --
 
-CREATE TABLE `teacher_salary` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `teacher_salary`;
+CREATE TABLE IF NOT EXISTS `teacher_salary` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
   `month` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` year NOT NULL,
   `date` date NOT NULL,
   `paid` double(11,2) NOT NULL,
-  `_status` varchar(255) NOT NULL
+  `_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -812,21 +881,23 @@ CREATE TABLE `teacher_salary` (
 -- Table structure for table `teacher_salary_history`
 --
 
-CREATE TABLE `teacher_salary_history` (
-  `id` int(11) NOT NULL,
-  `index_number` bigint(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `teacher_salary_history`;
+CREATE TABLE IF NOT EXISTS `teacher_salary_history` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `index_number` bigint NOT NULL,
+  `grade_id` int NOT NULL,
+  `subject_id` int NOT NULL,
   `subject_fee` double(11,2) NOT NULL,
-  `student_count` int(11) NOT NULL,
-  `hall_charge` int(11) NOT NULL,
+  `student_count` int NOT NULL,
+  `hall_charge` int NOT NULL,
   `subtotal` double(11,2) NOT NULL,
   `paid` double(11,2) NOT NULL,
   `_status` varchar(255) NOT NULL,
   `month` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` year NOT NULL,
   `date` date NOT NULL,
-  `invoice_number` int(11) NOT NULL
+  `invoice_number` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -835,16 +906,18 @@ CREATE TABLE `teacher_salary_history` (
 -- Table structure for table `timetable`
 --
 
-CREATE TABLE `timetable` (
-  `id` int(11) NOT NULL,
-  `grade_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `timetable`;
+CREATE TABLE IF NOT EXISTS `timetable` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `grade_id` int NOT NULL,
   `day` varchar(255) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL,
-  `classroom_id` int(11) NOT NULL,
+  `subject_id` int NOT NULL,
+  `teacher_id` int NOT NULL,
+  `classroom_id` int NOT NULL,
   `start_time` double(11,2) NOT NULL,
-  `end_time` double(11,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `end_time` double(11,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `timetable`
@@ -894,12 +967,14 @@ INSERT INTO `timetable` (`id`, `grade_id`, `day`, `subject_id`, `teacher_id`, `c
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -927,389 +1002,8 @@ INSERT INTO `user` (`id`, `email`, `password`, `type`) VALUES
 (67, 'dad4@gmail.com', '12345', 'Parents'),
 (69, 'dad123@gmail.com', '12345', 'Parents'),
 (70, 'lkforex2015111@gmail.com', '12345', 'Student');
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `class_room`
---
-ALTER TABLE `class_room`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `event_category`
---
-ALTER TABLE `event_category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `event_category_type`
---
-ALTER TABLE `event_category_type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `exam`
---
-ALTER TABLE `exam`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `exam_range_grade`
---
-ALTER TABLE `exam_range_grade`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `exam_timetable`
---
-ALTER TABLE `exam_timetable`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `grade`
---
-ALTER TABLE `grade`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `group_message`
---
-ALTER TABLE `group_message`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `main_notifications`
---
-ALTER TABLE `main_notifications`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `my_friends`
---
-ALTER TABLE `my_friends`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `notification_history`
---
-ALTER TABLE `notification_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `online_chat`
---
-ALTER TABLE `online_chat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `parents`
---
-ALTER TABLE `parents`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `payment_notifications`
---
-ALTER TABLE `payment_notifications`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `petty_cash`
---
-ALTER TABLE `petty_cash`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `petty_cash_history`
---
-ALTER TABLE `petty_cash_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_attendance`
---
-ALTER TABLE `student_attendance`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_exam`
---
-ALTER TABLE `student_exam`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_grade`
---
-ALTER TABLE `student_grade`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_payment`
---
-ALTER TABLE `student_payment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_payment_history`
---
-ALTER TABLE `student_payment_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_subject`
---
-ALTER TABLE `student_subject`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subject`
---
-ALTER TABLE `subject`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subject_routing`
---
-ALTER TABLE `subject_routing`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teacher`
---
-ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teacher_attendance`
---
-ALTER TABLE `teacher_attendance`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teacher_salary`
---
-ALTER TABLE `teacher_salary`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teacher_salary_history`
---
-ALTER TABLE `teacher_salary_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `timetable`
---
-ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `chat`
---
-ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `class_room`
---
-ALTER TABLE `class_room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `event_category`
---
-ALTER TABLE `event_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `event_category_type`
---
-ALTER TABLE `event_category_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `exam`
---
-ALTER TABLE `exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `exam_range_grade`
---
-ALTER TABLE `exam_range_grade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
---
--- AUTO_INCREMENT for table `exam_timetable`
---
-ALTER TABLE `exam_timetable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `grade`
---
-ALTER TABLE `grade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `group_message`
---
-ALTER TABLE `group_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `main_notifications`
---
-ALTER TABLE `main_notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `my_friends`
---
-ALTER TABLE `my_friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `notification_history`
---
-ALTER TABLE `notification_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `online_chat`
---
-ALTER TABLE `online_chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `parents`
---
-ALTER TABLE `parents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `payment_notifications`
---
-ALTER TABLE `payment_notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `petty_cash`
---
-ALTER TABLE `petty_cash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `petty_cash_history`
---
-ALTER TABLE `petty_cash_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `student_attendance`
---
-ALTER TABLE `student_attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `student_exam`
---
-ALTER TABLE `student_exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
---
--- AUTO_INCREMENT for table `student_grade`
---
-ALTER TABLE `student_grade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
---
--- AUTO_INCREMENT for table `student_payment`
---
-ALTER TABLE `student_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
---
--- AUTO_INCREMENT for table `student_payment_history`
---
-ALTER TABLE `student_payment_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=624;
---
--- AUTO_INCREMENT for table `student_subject`
---
-ALTER TABLE `student_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
---
--- AUTO_INCREMENT for table `subject`
---
-ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `subject_routing`
---
-ALTER TABLE `subject_routing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
---
--- AUTO_INCREMENT for table `teacher`
---
-ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `teacher_attendance`
---
-ALTER TABLE `teacher_attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `teacher_salary`
---
-ALTER TABLE `teacher_salary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `teacher_salary_history`
---
-ALTER TABLE `teacher_salary_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `timetable`
---
-ALTER TABLE `timetable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
