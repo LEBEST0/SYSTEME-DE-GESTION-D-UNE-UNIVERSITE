@@ -380,12 +380,12 @@ display:none;
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        	Student
-            <small>Preview</small>
+        	Etudiant
+         
         </h1>
         <ol class="breadcrumb">
-        	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">All Student</a></li>
+        	<li><a href="#"><i class="fa fa-dashboard"></i> Maison</a></li>
+            <li><a href="#">Tous les étudiants</a></li>
         </ol>
 	</section>
 
@@ -397,17 +397,17 @@ display:none;
             	<!-- general form elements -->
               	<div class="box box-primary">
                 	<div class="box-header with-border">
-                  		<h3 class="box-title">Select Grade</h3>
+                  		<h3 class="box-title">Selectionnez la classe</h3>
                 	</div><!-- /.box-header -->
                 
                   	<div class="box-body" >
                   		<div class="form-group" id="divGender">
                     		<div class="col-xs-3">
-                      			<label for="exampleInputPassword1">Grade</label>
+                      			<label for="exampleInputPassword1">Classe</label>
                     		</div>
                     		<div class="col-xs-4" id="divGender1">
                     			<select name="grade" class="form-control" id="grade" ><!--MSK-000107-->
-                    				<option>Select Grade</option>
+                    				<option>Selectionnez</option>
 <?php
 include_once('../controller/config.php');
 $sql="SELECT * FROM grade";
@@ -578,15 +578,15 @@ if(isset($_GET["do"])&&($_GET["do"]=="showSTable")){
     		<div class="modal-content">
 				<div class="modal-header bg-primary">
         			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        			<h4 class="modal-title" id="frm_title">Delete</h4>
+        			<h4 class="modal-title" id="frm_title">Supprimer</h4>
       			</div>
 
 				<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Are you sure?</strong>  Do you want to leave this Student?
+        			<strong style="color:red;">Êtes-vous sûre ?</strong>  Voulez-vous retirer cet étudiant ?
         		</div>
       			<div class="modal-footer">
-					<a href="#" style='margin-left:10px;' id="btnYes" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000132 -->
-        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">No</button>
+					<a href="#" style='margin-left:10px;' id="btnYes" class="deletebtn btn btn-danger col-sm-2 pull-right">Oui</a><!-- MSK-000132 -->
+        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">Non</button>
       			</div>
     		</div>
   		</div>
@@ -687,82 +687,7 @@ function Delete_alert(msg){
 </script>
 
 <!-- //MSK-00148 modalviewform-->
-   
-<div class="modal msk-fade" id="modalviewform" tabindex="-1" role="dialog" aria-labelledby="insert_alert1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-	<div class="modal-dialog"><!--modal-dialog -->  
-		<div class="container col-lg-12 "><!--modal-content --> 
-      		<div class="row">
-          		<div class="panel panel-info"><!--panel --> 
-            		<div class="panel-heading">
-                    	<button type="button"  class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-              			<h3 class="panel-title" id="hname"></h3>
-            		</div>
-            		<div class="panel-body"><!--panel-body -->
-              			<div class="row">
-                			<div class="col-md-3"> 
-                				<img id="photo2" alt="User Pic" src="" class="img-circle img-responsive"> 
-                			</div>
-                			<div class=" col-md-9"> 
-                  				<table class="table table-user-information">
-                    				<tbody>
-                      					<tr>
-                        					<td>Full Name</td>
-                        					<td id="full_name2"> </td>
-                      					</tr>
-                      					<tr>
-                        					<td>Name With Initials</td>
-                        					<td id="i_name2"> </td>
-                      					</tr>
-                             			<tr>
-                        					<td>Address</td>
-                        					<td id="address2"> </td>
-                      					</tr>
-                        				<tr>
-                        					<td>Gender</td>
-                        					<td id="gender2"> </td>
-                      					</tr>
-                      					<tr>
-                        					<td>Email</td>
-                        					<td id="email2"> </td>
-                      					</tr>
-                        					<td>Phone Number</td>
-                        					<td id="phone2"> </td>
-                           
-                      					</tr>
-                                        <tr>
-                        					<td>Guardians Name</td>
-                        					<td id="g_name2"> </td>
-                      					</tr>
-                        				<tr>
-                        					<td>Guardians Address</td>
-                        					<td id="g_address2"> </td>
-                      					</tr>
-                      					<tr>
-                        					<td>Guardians Phone</td>
-                        					<td id="g_phone2"> </td>
-                           
-                      					</tr>
-                     					<tr>
-                        					<td>Guardians Email</td>
-                        					<td id="g_email2"> </td>
-                      					</tr>
-                    				</tbody>
-                  				</table>
-                  			</div>
-                   		</div>
-                  	</div><!--/.panel-body -->
-                	<div class="panel-footer">
-                    	<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                           
-                            <a href="#"  id="id4"  data-toggle="modal" type="button" class="confirm-delete btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a><!--MSK-00152-->
-                        </span>
-                    </div>
-            	</div><!--/. panel--> 
-			</div><!--/.row --> 
-    	</div><!--/.modal-content -->
-	</div><!--/.modal-dialog -->
-</div><!--/.modal -->  
+    
 
 <script>
 
@@ -830,15 +755,15 @@ function showModal1(Viewform){
       			<div class="row">
           			<div class="panel panel-primary "><!--panel --> 
             			<div class="panel-heading ">
-              				<h3 class="panel-title">Select Grade</h3>
+              				<h3 class="panel-title">Selectionnez la classe</h3>
             			</div>
             			<div class="panel-body"><!--panel-body -->
               				<div class="row">
                 				<div class="col-lg-3">
                                 	<div class="form-group">
-                                        <label for="">Grade</label>
+                                        <label for="">Classe</label>
                                         <select class="form-control" style="width:200px;" id="grade1" name="grade">
-                                            <option>Select Grade</option>
+                                            <option>Selectionnez la classe</option>
 <?php
 include_once('../controller/config.php');
 $sql="SELECT * FROM grade";
@@ -864,16 +789,16 @@ if(mysqli_num_rows($result) > 0){
   		<div class="modal-dialog">
     		<div class="modal-content">
 				<div class="modal-header bg-primary">
-        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
         			<h4 class="modal-title" id="frm_title">Delete</h4>
       			</div>
 
 				<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Are you sure?</strong>  Do you want to upgrade this Student?
+        			<strong style="color:red;">Are you sure?</strong>  Voulez-vous mettre à jour cet étudiant ?
         		</div>
       			<div class="modal-footer">
-					<a href="#" style='margin-left:10px;' id="btnYes1" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000132 -->
-        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">No</button>
+					<a href="#" style='margin-left:10px;' id="btnYes1" class="deletebtn btn btn-danger col-sm-2 pull-right">Oui</a><!-- MSK-000132 -->
+        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">Non</button>
       			</div>
     		</div>
   		</div>

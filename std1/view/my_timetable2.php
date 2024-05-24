@@ -93,12 +93,12 @@ body.modal-open-noscroll1
     <section class="content-header">
     	<h1>
         	Timetable
-        	<small>Preview</small>
+        	
         </h1>
         <ol class="breadcrumb">
-        	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Timetable</a></li>
-            <li><a href="#">My Timetable</a></li>
+        	<li><a href="#"><i class="fa fa-dashboard"></i>Depart</a></li>
+            <li><a href="#">Emploi de temps</a></li>
+            <li><a href="#">Mon programme</a></li>
     	</ol>
 	</section>
     
@@ -111,20 +111,20 @@ body.modal-open-noscroll1
                     
 <?php $index=$_SESSION["index_number"]; ?> 
    
-                        <a href="#" onClick="showModal(this)" class="btn btn-success btn-sm pull-right" data-id="<?php echo $index; ?>">Add <span class="glyphicon glyphicon-plus"></span></a><!--MSK-000113-->
-                        <h3 class="box-title">My Timetable </h3>
+                        <a href="#" onClick="showModal(this)" class="btn btn-success btn-sm pull-right" data-id="<?php echo $index; ?>">Ajouter un programme <span class="glyphicon glyphicon-plus"></span></a><!--MSK-000113-->
+                        <h3 class="box-title">Mon programme </h3>
                     </div><!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <table id="example3" class="table table-bordered table-striped">
                             <thead style="color:white; background-color:#666;">
-                                <th class="col-md-1">Time</th>
-                                <th class="col-md-1">Sunday</th>
-                                <th class="col-md-1">Monday</th>
-                                <th class="col-md-1">Tuesday</th>
-                                <th class="col-md-1">Wednesday</th>
-                                <th class="col-md-1">Thursday</th>
-                                <th class="col-md-1">Friday</th>
-                                <th class="col-md-1">Saturday</th>
+                                <th class="col-md-1">Temps</th>
+                                <th class="col-md-1">Dimanche</th>
+                                <th class="col-md-1">Lundi</th>
+                                <th class="col-md-1">Mardi</th>
+                                <th class="col-md-1">Mercredi</th>
+                                <th class="col-md-1">Jeudi</th>
+                                <th class="col-md-1">Vendredi</th>
+                                <th class="col-md-1">Samedi</th>
                              </thead>
                              <tbody>
                                 
@@ -140,7 +140,7 @@ $row1=mysqli_fetch_assoc($result1);
 $id=$row1['id'];
             
 $sql2="SELECT 
-       DISTINCT start_time,end_time
+       start_time,end_time
        FROM
           timetable
        WHERE

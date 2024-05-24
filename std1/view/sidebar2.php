@@ -22,76 +22,39 @@ $image=$row['image_name'];
         </div>
         <div class="pull-left info">
         	<p><?php echo $name; ?></p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-          <a href="dashboard2.php">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-          </a>
-        </li>
+        <li class="header">NAVIGATION PRINCIPALE</li>
+        
         <li>
           <a href="teacher_profile2.php">
-            <i class="fa fa-flag"></i> <span>My Profile</span>
+            <i class="fa fa-flag"></i> <span>Mon profile</span>
           </a>
         </li>
          <li>
           <a href="my_student.php">
-            <i class="fa fa-graduation-cap"></i> <span>My Student</span>
+            <i class="fa fa-graduation-cap"></i> <span>Mes étudiants</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-book"></i>
-            <span>Subject</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="my_subject2.php"><i class="fa fa-circle-o"></i> My Subject</a></li>
-            <li><a href="all_subject2.php"><i class="fa fa-circle-o"></i> All Subject</a></li>
-          </ul>
-        </li>
+       
         <li class="treeview">
           <a href="#">
             <i class="fa fa-calendar-plus-o"></i>
-            <span>Timetable</span>
+            <span>Emploi de temps</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="my_timetable2.php"><i class="fa fa-circle-o"></i> My Timetable</a></li>
-            <li><a href="all_timetable2.php"><i class="fa fa-circle-o"></i>All Timetable</a></li>
+            <li><a href="my_timetable2.php"><i class="fa fa-circle-o"></i> Mon programme</a></li>
           </ul>
         </li>
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-calendar-check-o"></i>
-            <span>Attendance</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="my_attendance2.php"><i class="fa fa-circle-o"></i> My Attendance</a></li>
-            <li><a href="my_attendance_history2.php"><i class="fa fa-circle-o"></i>My Attendance History</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="my_salary.php">
-            <i class="fa fa-money"></i> <span>My Salary</span>
-          </a>
-        </li>
-         <li>
-          <a href="my_petty_cash.php">
-            <i class="fa fa-yen"></i> <span>My Petty Cash</span>
-          </a>
-        </li>
+        
+         
+        
          <li class="treeview">
           <a href="#">
             <i class="fa fa-certificate"></i>

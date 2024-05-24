@@ -264,24 +264,24 @@ $row1=mysqli_fetch_assoc($result1);
               	<div class="box box-primary">
                 	<div class="box-header with-border">
                   		<h3 class="box-title">Edit Student</h3>
-                        <a href="my_student.php?do=showSTable&grade_id=<?php echo $grade_id; ?>" style="float:right" type="button" class="btn text-right btn-success asd" id="btnSubmit2"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+                        <a href="my_student.php?do=showSTable&grade_id=<?php echo $grade_id; ?>" style="float:right" type="button" class="btn text-right btn-success asd" id="btnSubmit2"><span class="glyphicon glyphicon-arrow-left"></span>Retour</a>
                 	</div><!-- /.box-header -->
                    	<form role="form" action="../index.php" method="post"  enctype="multipart/form-data" id="form1" class="form-horizontal">
                 		<div class="box-body" >
-                        	<div class="row">
-                        		<div class="col-md-6">
-                                	<p class="alert-warning ">Student Details </p>
+                        	
+                        		
+                                	<p class="alert-warning ">Detail Etudiant </p>
                                      <div class="form-group" id="divFullName">
                                         <div class="col-xs-3">
-                                            <label for="exampleInputEmail1">Full Name</label>
+                                            <label for="exampleInputEmail1">Nom et prenom</label>
                                         </div>
                                         <div class="col-xs-9" id="divFullName1">
-                                           <input type="text" class="form-control" placeholder="Enter full name" name="full_name" id="full_name" autocomplete="off" value="<?php echo $row['full_name']; ?>">  
+                                           <input type="text" class="form-control" placeholder="Entrez le nom et prenom" name="full_name" id="full_name" autocomplete="off" value="<?php echo $row['full_name']; ?>">  
                                         </div>                    
                                     </div>
                                     <div class="form-group" id="divIName">
                                         <div class="col-xs-3">
-                                            <label for="exampleInputEmail1">Name With Initials</label>
+                                            <label for="exampleInputEmail1">Nom avec initial</label>
                                         </div>
                                         <div class="col-xs-9" id="divIName1">
                                             <input type="text" class="form-control" placeholder="Enter name with initials" name="i_name" id="i_name" autocomplete="off" value="<?php echo $row['i_name']; ?>">
@@ -289,7 +289,7 @@ $row1=mysqli_fetch_assoc($result1);
                                     </div>
                                     <div class="form-group" id="divAddress">
                                         <div class="col-xs-3">
-                                           <label for="exampleInputEmail1">Address</label>
+                                           <label for="exampleInputEmail1">Addresse</label>
                                         </div>
                                         <div class="col-xs-9" id="divAddress1">
                                            <input type="text" class="form-control" placeholder="Enter address" name="address" id="address" autocomplete="off" value="<?php echo $row['address']; ?>"> 
@@ -308,7 +308,7 @@ $row1=mysqli_fetch_assoc($result1);
                                             
                                             <div class="form-group" >
                                                 <div class="col-xs-5" id="divPhone">
-                                                    <label for="exampleInputEmail1">Phone</label>
+                                                    <label for="exampleInputEmail1">Telephone</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divPhone1">
                                                 	<input type="text" class="form-control" id="phone" name="phone" data-inputmask='"mask": "(999) 999-9999"' data-mask value="<?php echo $row['phone']; ?>">
@@ -316,7 +316,7 @@ $row1=mysqli_fetch_assoc($result1);
                                         	</div>  
                                             <div class="form-group" >
                                                 <div class="col-xs-5" id="divDOB">
-                                                    <label for="exampleInputEmail1">Date of Birth</label>
+                                                    <label for="exampleInputEmail1">Date de naissance</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divDOB1">
                                                 	<input type="text" class="form-control" id="b_date" name="b_date" value="<?php echo $row['b_date']; ?>">
@@ -324,12 +324,12 @@ $row1=mysqli_fetch_assoc($result1);
                                         	</div>  
                                             <div class="form-group" >
                                                 <div class="col-xs-5" id="divGender">
-                                                    <label for="exampleInputEmail1">Gender</label>
+                                                    <label for="exampleInputEmail1">Genre</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divGender1">
                                                  	<select name="gender" class="form-control" id="gender" >
-                                                         <option value="Male"<?=$row['gender'] == 'Male' ? ' selected="selected"' : '';?>>Male</option>
-                            							 <option value="Female"<?=$row['gender'] == 'Female' ? ' selected="selected"' : '';?>>Female</option>
+                                                         <option value="Male"<?=$row['gender'] == 'Male' ? ' selected="selected"' : '';?>>M</option>
+                            							 <option value="Female"<?=$row['gender'] == 'Female' ? ' selected="selected"' : '';?>>F</option>
                                                     </select>                                          
                                                 </div> 
                                         	</div> 
@@ -347,94 +347,17 @@ $row1=mysqli_fetch_assoc($result1);
                                             </div>
                                         </div>
                                     </div>                
-                            	</div>
-                                <div class="col-md-6">
-                                	<p class="alert-warning "> Guardian Details </p>
-                                     <div class="form-group" id="divGFullName">
-                                        <div class="col-xs-3">
-                                            <label for="exampleInputEmail1">Full Name</label>
-                                        </div>
-                                        <div class="col-xs-9" id="divGFullName1">
-                                           <input type="text" class="form-control" placeholder="Enter full name" name="g_full_name" id="g_full_name" autocomplete="off" value="<?php echo $row1['full_name']; ?>">  
-                                        </div>                    
-                                    </div>
-                                    <div class="form-group" id="divGIName">
-                                        <div class="col-xs-3">
-                                            <label for="exampleInputEmail1">Name With Initials</label>
-                                        </div>
-                                        <div class="col-xs-9" id="divGIName1">
-                                            <input type="text" class="form-control" placeholder="Enter name with initials" name="g_i_name" id="g_i_name" autocomplete="off" value="<?php echo $row1['i_name']; ?>">
-                                        </div>                    
-                                    </div>
-                                    <div class="form-group" id="divGAddress">
-                                        <div class="col-xs-3">
-                                           <label for="exampleInputEmail1">Address</label>
-                                        </div>
-                                        <div class="col-xs-9" id="divGAddress1">
-                                           <input type="text" class="form-control" placeholder="Enter address" name="g_address" id="g_address" autocomplete="off" value="<?php echo $row1['address']; ?>"> 
-                                        </div>                    
-                                    </div>
-                                    <div class="form-group" id="divGEmail">
-                                        <div class="col-xs-3">
-                                           <label for="exampleInputEmail1">Email</label>
-                                        </div>
-                                        <div class="col-xs-9" id="divGEmail1">
-                                           <input type="text" class="form-control" placeholder="Enter email address" name="g_email" id="g_email" autocomplete="off" value="<?php echo $row1['email']; ?>"> 
-                                        </div>                    
-                                    </div>
-                                    <div class="row" >
-                        				<div class="col-xs-7">
-                                            <div class="form-group" >
-                                                <div class="col-xs-5" id="divGPhone">
-                                                    <label for="exampleInputEmail1">Phone</label>
-                                                </div>
-                                                <div class="col-xs-7" id="divGPhone1">
-                                                	<input type="text" class="form-control" id="g_phone" name="g_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask value="<?php echo $row1['phone']; ?>" >
-                                                </div> 
-                                        	</div>
-                                            <div class="form-group" >
-                                                <div class="col-xs-5" id="divGDOB">
-                                                    <label for="exampleInputEmail1">Date of Birth</label>
-                                                </div>
-                                                <div class="col-xs-7" id="divGDOB1">
-                                                	<input type="text" class="form-control" id="g_b_date" name="g_b_date" value="<?php echo $row1['b_date']; ?>">
-                                                </div> 
-                                        	</div> 
-                                            <div class="form-group" >
-                                                <div class="col-xs-5" id="divGGender">
-                                                    <label for="exampleInputEmail1">Gender</label>
-                                                </div>
-                                                <div class="col-xs-7"  id="divGGender1">
-                                                 	<select name="g_gender" class="form-control" id="g_gender" >
-                                                        <option value="Male"<?=$row1['gender'] == 'Male' ? ' selected="selected"' : '';?>>Male</option>
-                                                        <option value="Female"<?=$row1['gender'] == 'Female' ? ' selected="selected"' : '';?>>Female</option>
-                                                    </select>                                          
-                                                </div> 
-                                        	</div>   
-                                             
-                                               	                   
-                                    	</div>
-                        			   	<div class="col-xs-5">
-                                        	<div class="form-group" id="divGPhoto">
-                                                <div class="col-xs-3">
-                                                    <label>Photo</label>
-                                                </div>                            
-                                                <div class="col-xs-3" id="divGPhoto1" style="height:150px;">
-                                                    <img src="../<?php echo $row1['image_name']; ?>" id="output1" style="width:130px;height:150px;" />
-                                                    <input type="file" name="g_fileToUpload" id="g_fileToUpload" style="margin-top:7px;"  />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                
-                            	</div>
-                            </div><br>
+                            	
+                                
+                          
+							<br>
                     	</div>
                        <div class="box-footer text-right">
                   			<input type="hidden" name="do" value="update_student"  />
                             <input type="hidden" name="std_index" value="<?php echo $std_index; ?>">
                              <input type="hidden" name="grade_id" value="<?php echo $grade_id; ?>">
                              <input type="hidden" name="showPage" value="my_student">
-                    		<button style="width:150px;" type="submit" class="btn text-right btn-warning asd" id="btnSubmit">Update</button><br>
+                    		<button style="width:150px;" type="submit" class="btn text-right btn-warning asd" id="btnSubmit">Mettre à jour</button><br>
                              
 <?php
 /*
