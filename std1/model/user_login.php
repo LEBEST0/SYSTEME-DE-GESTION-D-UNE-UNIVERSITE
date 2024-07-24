@@ -40,7 +40,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="user_login")){
 			$index_number=$row1['index_number'];
 			$_SESSION["index_number"]=$index_number;
 			$_SESSION["type"]="Teacher";
-			header("Location: view/dashboard2.php");
+			header("Location: view/teacher_profile2.php");
 		}
 		
 		if($type == "Admin"){

@@ -93,13 +93,13 @@ body.modal-open-noscroll1
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        	Exam
-            <small>Preview</small>
+        	Examen
+            
         </h1>
         <ol class="breadcrumb">
-        	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Exam</a></li>
-            <li><a href="#">My Exam Marks</a></li>
+        	<li><a href="#"><i class="fa fa-dashboard"></i> Maison</a></li>
+            <li><a href="#">Examen</a></li>
+            <li><a href="#">Notes exam</a></li>
         </ol>
 	</section>
 
@@ -109,16 +109,16 @@ body.modal-open-noscroll1
             <div class="col-md-5"><!-- left column -->
               	<div class="box box-primary"><!-- general form elements -->
                 	<div class="box-header with-border">
-                  		<h3 class="box-title">My Student Exam Marks</h3>
+                  		<h3 class="box-title">Notes examens</h3>
                 	</div><!-- /.box-header -->
                   	<div class="box-body">
                         <div class="form-group" id="divGrade">
                         	<div class="col-md-3">
-                        		<label>Grade</label>
+                        		<label>Classe</label>
                      		</div>
                         	<div class="col-md-7" id="divGrade1">
                                 <select name="grade" class="form-control" id="grade" style="width:105%;" ><!--MSK-000107-->
-                                    <option>Select Grade</option>
+                                    <option>Selectionnez la classe</option>
 <?php
 include_once('../controller/config.php');
 $index=$_SESSION["index_number"];
@@ -137,11 +137,11 @@ if(mysqli_num_rows($result) > 0){
                     	<br><br>
                         <div class="form-group" id="divExam">
                         	<div class="col-md-3">
-                        		<label>Exam</label>
+                        		<label>Matiere exam</label>
                      		</div>
                         	<div class="col-md-7" id="divExam1">
                                 <select name="exam" class="form-control" id="exam" style="width:105%;" ><!--MSK-000107-->
-                                    <option>Select Exam</option>
+                                    <option>Selectionnez</option>
 <?php
 include_once('../controller/config.php');
 $my_index=$_SESSION["index_number"];
@@ -161,7 +161,7 @@ if(mysqli_num_rows($result) > 0){
                   	<div class="box-footer">
                     	<input type="hidden" id="current_year" value="<?php echo $current_year; ?>">
 	                  	<input type="hidden" id="my_index" value="<?php echo $my_index; ?>">
-                    	<button type="button" id="btnSubmit" class="btn btn-primary"  onClick="showMyStudent(this)">Submit</button><!--MSK-000108-->
+                    	<button type="button" id="btnSubmit" class="btn btn-primary"  onClick="showMyStudent(this)">Envoyer</button><!--MSK-000108-->
                   	</div>
             	</div><!-- /.box -->
         	</div>

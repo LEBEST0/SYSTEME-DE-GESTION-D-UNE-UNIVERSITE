@@ -25,7 +25,7 @@ $row1=mysqli_fetch_assoc($result1);
 
 ?>                
         	<a href="#" onClick="showModal(this)" class="btn btn-success btn-sm pull-right" data-id="<?php echo $grade_id; ?>,<?php echo $exam_id; ?>">Add <span class="glyphicon glyphicon-plus"></span></a><!--MSK-000113-->
-            <h3 class="box-title">Exam Timetable - <?php echo $row['name']; ?> - <?php echo $row1['name']; ?></h3>
+            <h3 class="box-title">Exam Timetable - <?php if(isset($row['name'])){echo $row['name'];} ?> - <?php echo $row1['name']; ?></h3>
 <?php } ?>
 		</div><!-- /.box-header -->
         <div class="box-body table-responsive">
